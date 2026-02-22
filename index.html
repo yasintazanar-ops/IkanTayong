@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IkanTayong</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Poppins;
+background:linear-gradient(135deg,#ffdce6,#ffeef3,#fff6f9);
+overflow:hidden;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* HEARTS COVER BACKGROUND */
+
+#hearts{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+color:#ff69b4;
+font-size:20px;
+opacity:0.9;
+animation: floatUp linear forwards;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+10%{
+opacity:0.9;
+}
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+}
+
+@keyframes floatSparkle{
+
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+
+15%{
+opacity:1;
+}
+
+75%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-10vh);
+opacity:1;
+}
+
+}
+
+/* COVER */
+
+#cover{
+position:fixed;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#ffdce6,#ffeef3,#fff6f9);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:10;
+cursor:pointer;
+}
+
+#cover h1{
+font-family:Playfair Display;
+font-size:42px;
+margin-top:50px;
+animation:fadeDown 2s;
+}
+
+.subtitle{
+opacity:.8;
+margin-bottom:40px;
+animation:fadeDown 3s;
+}
+}
+
+#cover p{
+opacity:.6;
+}
+
+/* MAIN */
+
+#main{
+display:none;
+padding:20px;
+text-align:center;
+animation:fadeIn 1.5s;
+}
+
+.title{
+font-family:Playfair Display;
+font-size:36px;
+color:#5a3d4b;
+}
+
+.subtitle{
+opacity:.6;
+margin-bottom:30px;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:15px;
+padding:10px;
+}
+
+.card{
+  background:white;
+  padding:10px;
+  border-radius:15px;
+  box-shadow:0 0 25px rgba(255,105,180,0.3);
+
+  transform:translateY(30px);
+  opacity:0;
+
+  animation:cardFade 0.8s ease forwards;
+}
+
+.card:nth-child(1){animation-delay:.2s;}
+.card:nth-child(2){animation-delay:.4s;}
+.card:nth-child(3){animation-delay:.6s;}
+.card:nth-child(4){animation-delay:.8s;}
+.card:nth-child(5){animation-delay:1s;}
+.card:nth-child(6){animation-delay:1.2s;}
+.card:nth-child(7){animation-delay:1.4s;}
+.card:nth-child(8){animation-delay:1.6s;}
+
+@keyframes cardFade{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img,
+.card video{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.caption{
+margin-top:8px;
+font-size:14px;
+color:#444;
+}
+
+/* NOTE */
+
+.note{
+background:#fffaf0;
+padding:20px;
+margin:40px auto;
+max-width:400px;
+border-radius:10px;
+box-shadow:0 10px 20px rgba(0,0,0,.1);
+font-style:italic;
+)
+
+/* HEART BACKGROUND */
+
+#hearts span{
+position:fixed;
+color:#ff69b4;
+animation:floatSparkle 6s linear infinite;
+z-index:999;
+opacity:1; /* TAMBAHKAN INI */
+}
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-10vh);
+opacity:0;
+}
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+@keyframes bounceNote{
+0%{transform:translateY(50px) rotate(-2deg);}
+50%{transform:translateY(-5px) rotate(0deg);}
+100%{transform:translateY(0) rotate(1deg);}
+}
+
+.note.show{
+opacity:1;
+animation:bounceNote 1s ease forwards;
+}
+
+/* DREAMY BACKGROUND GLOW */
+
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:radial-gradient(circle at 30% 40%, rgba(255,182,193,0.15), transparent 40%),
+           radial-gradient(circle at 70% 60%, rgba(255,182,193,0.1), transparent 40%);
+animation:bgMove 20s linear infinite;
+z-index:-1;
+}
+
+@keyframes bgMove{
+0%{transform:translate(0,0);}
+50%{transform:translate(-5%, -5%);}
+100%{transform:translate(0,0);}
+}
+
+/* LOVE STRIP BAWAH */
+
+.love-strip{
+width:100%;
+overflow:hidden;
+white-space:nowrap;
+margin-top:40px;
+}
+
+.love-track{
+display:inline-block;
+font-size:22px;
+color:#ff69b4;
+animation: slideLove 15s linear infinite;
+}
+
+@keyframes slideLove{
+0%{
+transform:translateX(100%);
+}
+100%{
+transform:translateX(-100%);
+}
+}
+
+body::after{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+opacity:0.35;
+pointer-events:none;
+z-index:1;
+}
+
+#hearts{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:1;
+}
+
+#hearts{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:0;
+overflow:hidden;
+}
+
+#hearts span{
+position:absolute;
+opacity:1;
+animation: floatHeart linear infinite;
+}
+
+@keyframes floatHeart{
+
+0%{
+transform:translateY(110vh) scale(0.8);
+opacity:1;
+}
+
+100%{
+transform:translateY(-10vh) scale(1.2);
+opacity:1;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+<div class="background-shapes">
+  <div class="shape shape1"></div>
+  <div class="shape shape2"></div>
+  <div class="shape shape3"></div>
+</div>
+
+<!-- COVER -->
+
+<div id="cover" onclick="openSite()">
+
+<div id="hearts"></div>
+
+<h1>IkanTayong</h1>
+<p>tap to open</p>
+
+</div>
+
+
+<!-- MUSIC -->
+
+<audio id="music" loop>
+<source src="./loml.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- MAIN -->
+
+<div id="main">
+
+<div class="title">IkanTayong</div>
+<div class="subtitle">A little memory of us HAHAH</div>
+
+<div class="gallery" id="gallery"></div>
+
+
+<div class="note">
+Hi ikan.. How's ur day? i wish baik baik saja yaac! emmm... I don’t know if this will be the last time I send you something. I’m sorry if this seems forward. If you’ve found someone new, I understand, and I truly wish you well.
+My wish for you is that this life becomes everything you want it to be that your dreams stay big and your worries stay small. I hope you never have to carry more than you can hold. I wish you happiness and good health.
+I am not a bitter person, nor will I ever give you power over my life for what happened between us. I can’t bring myself to hate someone I once loved how could I? In the end, no one is truly at fault for what we became.
+Until our paths cross again, it was a pleasure and a privilege loving you. Take care, always🐳
+<br><br>
+— yasin
+</div>
+
+<div class="love-strip">
+  <div class="love-track">
+    ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡
+  </div>
+</div>
+
+<script>
+
+/* OPEN SITE */
+
+function openSite(){
+
+document.getElementById("cover").style.display="none";
+document.getElementById("main").style.display="block";
+document.body.style.overflow="auto";
+
+const music=document.getElementById("music");
+music.volume=0;
+music.play();
+
+let vol=0;
+const fade=setInterval(()=>{
+vol+=0.05;
+music.volume=vol;
+if(vol>=0.5) clearInterval(fade);
+},200);
+
+}
+
+/* DATA FOTO */
+
+const data=[
+
+{type:"image",src:"./foto1.jpg",caption:"our first memory. first meet nya photobox gitu yh?"},
+{type:"image",src:"./foto2.jpg",caption:"film nya seru ya ikan, kurang serem sih jujur, aku berani sekarang ma HoHo"},
+{type:"image",src:"./foto3.jpg",caption:"this moment meant everything"},
+{type:"image",src:"./foto4.jpg",caption:"thank you yaa ikan selama ini suda mau bantuin yasin dan aware xx, sowy kalau ngerepotin :)"},
+{type:"image",src:"./foto5.jpg",caption:"btwey ini sangat cutee"},
+{type:"image",src:"./foto6.jpg",caption:"kita kayak anak TK"},
+{type:"image",src:"./foto7.jpg",caption:"tysm ya ikan suda merayakan^^"},
+{type:"video",src:"./video1.mp4",caption:"eum... lucu sekaliee"}
+
+];
+
+
+/* LOAD GALLERY (AMAN UNTUK GITHUB) */
+
+window.onload=function(){
+
+const gallery=document.getElementById("gallery");
+
+data.forEach(item=>{
+
+const card=document.createElement("div");
+card.className="card";
+
+if(item.type==="image"){
+
+const img=document.createElement("img");
+img.src=item.src;
+
+card.appendChild(img);
+
+}
+
+if(item.type==="video"){
+
+const video=document.createElement("video");
+video.controls=true;
+
+const source=document.createElement("source");
+source.src=item.src;
+source.type="video/mp4";
+
+video.appendChild(source);
+
+card.appendChild(video);
+
+}
+
+const caption=document.createElement("div");
+caption.className="caption";
+caption.innerText=item.caption;
+
+card.appendChild(caption);
+
+gallery.appendChild(card);
+
+});
+
+}
+
+setInterval(()=>{
+  const star=document.createElement("span");
+  star.innerHTML="✧"; // bisa diganti "♡" atau "✨"
+  star.style.position="fixed";
+  star.style.color="#ffb6c1";
+  star.style.left=Math.random()*100+"%";
+  star.style.fontSize=(Math.random()*12+8)+"px";
+  star.style.top="100%";
+  star.style.transition="top 6s linear, opacity 6s linear";
+  document.body.appendChild(star);
+  setTimeout(()=>{
+    star.style.top="-10%";
+    star.style.opacity="0";
+  },50);
+  setTimeout(()=>star.remove(),6000);
+},800);
+
+</script>
+
+<script>
+
+setInterval(()=>{
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="♡";
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.fontSize=(Math.random()*20+15)+"px";
+
+heart.style.animationDuration=(Math.random()*3+4)+"s";
+
+document.getElementById("hearts").appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},7000);
+
+},400);
+
+</script>
+
+</body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+</html>
